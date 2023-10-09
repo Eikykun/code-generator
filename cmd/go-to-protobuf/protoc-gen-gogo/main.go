@@ -37,6 +37,9 @@ func main() {
 	for _, file := range request.FileToGenerate {
 		if strings.Contains(file, "/") {
 			param := "paths=source_relative"
+			if request.Parameter != nil {
+				param = *request.Parameter + "," + param
+			}
 			request.Parameter = &param
 			break
 		}
